@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class NPC : MonoBehaviour
 {
+    public Canvas NPCInteractionWindow;
     private Material[] mats;
     public InteractionManager interactionManager;
 
@@ -12,7 +13,7 @@ public class NPC : MonoBehaviour
     }
 
     private void Update() {
-        if(interactionManager.NPCInteracted == true){
+        if(NPCInteractionWindow.GetComponent<Canvas>().enabled == true){
             GetComponent<Renderer>().material = mats[1];
         }
         else{

@@ -20,15 +20,16 @@ public class Movement : MonoBehaviour
             Ray cameraToMouse = Camera.main.ScreenPointToRay(Input.mousePosition);
             RaycastHit hit;
 
-            if(Physics.Raycast(cameraToMouse, out hit, 100, whatCanBeClicked)) {
+            if(Physics.Raycast(cameraToMouse, out hit, 100, whatCanBeClicked) && !hit.transform.CompareTag("NPC")) {
                 playerAgent.SetDestination(hit.point);
             }
+        }
+
+        if(interactionManager.playerSelected == true) {
             GetComponent<Renderer>().material = mats[1];
         }
-
-        if(Input.GetMouseButtonDown(1)) {
+        else {
             GetComponent<Renderer>().material = mats[0];
         }
-
     }
 }

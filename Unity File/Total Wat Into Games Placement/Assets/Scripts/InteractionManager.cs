@@ -7,6 +7,13 @@ public class InteractionManager : MonoBehaviour
     public LayerMask whatCanBeInteracted;
     public bool playerSelected = false;
     public bool NPCInteracted = false;
+    private float minDistance = 5;
+    private GameObject player;
+    public Canvas NPCInteractionWindow;
+
+    private void Awake() {
+        player = GameObject.FindWithTag("Player");;
+    }
 
     private void Update() {
         if(Input.GetMouseButtonDown(0)) {
@@ -19,7 +26,7 @@ public class InteractionManager : MonoBehaviour
                     playerSelected = true;
                 }
 
-                if(hit.transform.CompareTag("NPC") && playerSelected == true) {
+                if(hit.transform.CompareTag("NPC") &&  playerSelected == true && Vector3.Distance(hit.transform.position, player.transform.position) < minDistance) {
                     Debug.Log("INTERACTED: NPC");
                     NPCInteracted = true;
                 }
