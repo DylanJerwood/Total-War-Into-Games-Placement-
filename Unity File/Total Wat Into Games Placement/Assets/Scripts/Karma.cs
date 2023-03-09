@@ -6,10 +6,13 @@ using TMPro;
 
 public class Karma : MonoBehaviour
 {
-    public int karmaNum = 0;
-    public TMP_Text txt;
+    public int frenchKarmaNum = 100;
+    public int germanKarmaNum = 100;
+    public TMP_Text french_txt;
+    public TMP_Text german_txt;
 
     private void Update() {
-        txt.text = "Karma: " + karmaNum.ToString();
+        french_txt.text = "French Karma: " + frenchKarmaNum.ToString();
+        german_txt.text = "German Karma: " + germanKarmaNum.ToString();
     }
 }
